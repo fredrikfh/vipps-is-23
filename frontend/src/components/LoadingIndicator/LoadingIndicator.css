@@ -1,0 +1,31 @@
+.loadingBall {
+    background-color: #FE5B23;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    margin: 15px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .loadingBall {
+      animation: sprett infinite 600ms ease-in-out;
+      animation-direction: alternate;
+    }
+}
+
+@keyframes sprett {
+    from {
+        transform: translateY(-15px);
+        background-color: #FE5B23;
+    }
+    to {
+        transform: translateY(15px);
+        background-color: #FE5B2360;
+    }
+}
