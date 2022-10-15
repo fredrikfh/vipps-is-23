@@ -15,7 +15,6 @@ interface ApiResponse {
 function Searchbar() {
 
     const [loading, setLoading] = useState(false);
-
     const [searchString, setSearchString] = useState('');
     const [response, setResponse] = useState<ApiResponse>(); // json object
 

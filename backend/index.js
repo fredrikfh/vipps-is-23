@@ -8,7 +8,6 @@ const PORT = 8080;
 app.use( express.json() );
 
 const cors = require("cors");
-const { request } = require('express');
 app.use(cors());
 
 app.listen(
