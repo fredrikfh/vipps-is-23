@@ -13,11 +13,11 @@ For simplicty, the server is configured to launch on port `8080`.
 
 ## Functionalities
 
-- `GET /article/` searches for article:
+- `GET /article/{article}` searches for article:
 
   - Parameters:
 
-    - `searchString (string)` The name of the article to search for
+    - `article (string)` The name of the article to search for
 
   - Responses:
 

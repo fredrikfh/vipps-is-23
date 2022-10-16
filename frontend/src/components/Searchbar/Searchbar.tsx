@@ -7,7 +7,7 @@ import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
 
 interface ApiResponse {
     article: string,
-    status: string,
+    status: number,
     data?: any,
     occurrences?: number
 }
@@ -31,16 +31,16 @@ function Searchbar() {
         fetch(`http://localhost:8080/article/${searchString}`, {
             method: 'GET',
         })
-          .then((res) => res.json())
-          .then((res) => {
+        .then((res) => res.json())
+        .then(res => {
             setResponse(res);
             setLoading(false);
-          })
-          .catch((err) => {
+        })
+        .catch((err) => {
             console.error(err);
-          })
-        }, 
-    [searchString]);
+            setLoading(false);
+        })
+    }, [searchString]);
 
     // Displays the word count of the article
     const textToReturn = () => {
@@ -48,7 +48,7 @@ function Searchbar() {
             return;
         }
         
-        if (response?.status === "does not exist") {
+        if (response?.status !== 200) {
             return <p className="occurrenceText">😐 Fant ingen artikkel</p>;
         } else {
             return <p className="occurrenceText"><b>{response?.occurrences}</b> ord</p>;
@@ -57,7 +57,7 @@ function Searchbar() {
 
     // adds red border to textField if no article is found
     const textFieldToReturn = () => {
-        if (response?.status === "does not exist" && searchString !== '') {
+        if (response?.status !== 200 && searchString !== '') {
             return <TextField error fullWidth label="Søk wikipedia" className="searchTextField" variant="outlined" onChange={updateSearchString} value={searchString} InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
