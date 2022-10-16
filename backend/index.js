@@ -27,12 +27,12 @@ app.get('/article/:name', async (req, res) => {
         console.log(err);
     }
 
-    if (data === null) {
+    if (data === null || data === undefined) {
         res.status(404).send({
             article: articleName,
             status: 404
         });
-    } else if (data.parse) {
+    } else if (data.hasOwnProperty('parse')) {
         // wiki-page exists
         const rawData = data.parse.text['*']; // html output
         const rawDataLower = rawData.toLowerCase();

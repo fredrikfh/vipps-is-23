@@ -16,6 +16,7 @@ function Searchbar() {
   const [loading, setLoading] = useState(false);
   const [searchString, setSearchString] = useState('');
   const [response, setResponse] = useState<ApiResponse>(); // json object
+  const [error, setError] = useState(false);
 
   const updateSearchString = (event: any) => {
     setSearchString(event.target.value);
@@ -34,10 +35,12 @@ function Searchbar() {
       .then((res) => {
         setResponse(res);
         setLoading(false);
+        setError(false);
       })
       .catch((err) => {
         console.error(err);
         setLoading(false);
+        setError(true);
       });
   }, [searchString]);
 
@@ -47,7 +50,9 @@ function Searchbar() {
       return;
     }
 
-    if (response?.status !== 200) {
+    if (error) {
+      return <p className="occurrenceText">😱 Det har oppstått en feil</p>;
+    } else if (response?.status !== 200) {
       return <p className="occurrenceText">😐 Fant ingen artikkel</p>;
     } else {
       return (
