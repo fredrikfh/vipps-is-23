@@ -1,17 +1,17 @@
 .occurenceText {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 .searchTextField {
-    background-color: white;
-    font-size: 30px !important;
+  background-color: white;
+  font-size: 30px !important;
 }
 
 .textToReturnBox {
-    font-size: 25px;
-    padding: 0 30px;
-    background-color: #5D3DC0;
-    color: white;
-    margin-top: 30px;
-    border-radius: 10px;
+  font-size: 25px;
+  padding: 0 30px;
+  background-color: #5d3dc0;
+  color: white;
+  margin-top: 30px;
+  border-radius: 10px;
 }
