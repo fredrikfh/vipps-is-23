@@ -8,8 +8,8 @@ import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
 interface ApiResponse {
     article: string,
     status: string,
-    data: any,
-    occurrences: number
+    data?: any,
+    occurrences?: number
 }
 
 function Searchbar() {
@@ -48,8 +48,8 @@ function Searchbar() {
             return;
         }
         
-        if (response?.occurrences === null) {
-            return <p className="occurrenceText">Fant ingen artikkel</p>;
+        if (response?.status === "does not exist") {
+            return <p className="occurrenceText">😐 Fant ingen artikkel</p>;
         } else {
             return <p className="occurrenceText"><b>{response?.occurrences}</b> ord</p>;
         }
@@ -77,13 +77,15 @@ function Searchbar() {
     };
 
     const displayLoading = () => {
-        return loading ? <LoadingIndicator /> : <></>;
+        return loading ? <LoadingIndicator /> : null;
     }
 
     return (
         <>
             {textFieldToReturn()}
-            {textToReturn()}
+            <div className="textToReturnBox">
+                {textToReturn()}
+            </div>
             {displayLoading()}
         </>
     );
