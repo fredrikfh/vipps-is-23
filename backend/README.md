@@ -8,7 +8,7 @@ For simplicty, the server is configured to launch on port `8080`.
 
 ## How to run
 
-- `npm install`
+- `yarn` or npm install
 - `node .`
 
 ## Functionalities
